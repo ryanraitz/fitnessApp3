@@ -39,21 +39,21 @@ class ResetPasswordViewController : UIViewController {
                     Auth.auth().sendPasswordReset(withEmail: self.resetPasswordTextField.text!)
                     { error in
                         
-                          if (error == nil)
-                          {
+                        if (error == nil)
+                        {
                             self.confirmationLabel.text = "Password reset link sent to " + self.resetPasswordTextField.text!
-                          }
-                          else
-                          {
+                        }
+                        else
+                        {
                             self.confirmationLabel.text = "Error sending link to " + self.resetPasswordTextField.text!
-                          }
+                        }
                     }
                 }
             }
         })
     }
     
-
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -79,5 +79,5 @@ class ResetPasswordViewController : UIViewController {
         resetPasswordTextField.layer.addSublayer(bottomLine1)
         self.resetPasswordTextField.attributedPlaceholder = NSAttributedString(string: "Enter Email to Receive Password Reset Link", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
-
+    
 }

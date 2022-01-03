@@ -12,10 +12,10 @@ import AVFoundation
 import AVKit
 
 class DetailViewController : UIViewController {
-
-//Properties
-
-
+    
+    //Properties
+    
+    
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var descriptionLabel: UITextView!
@@ -25,7 +25,7 @@ class DetailViewController : UIViewController {
     @IBAction func watchDemoAction(_ sender: Any) {
         
         guard let path = Bundle.main.path(forResource: selectedLocation?.videoURL,
-            ofType: "mp4") else { return }
+                                          ofType: "mp4") else { return }
         let videoLink = URL(fileURLWithPath: path)
         let player = AVPlayer(url: videoLink)
         let playerViewController = AVPlayerViewController()
@@ -38,11 +38,11 @@ class DetailViewController : UIViewController {
     }
     
     @IBOutlet weak var watchDemo: UIButton!
-
+    
     
     var selectedLocation : LocationModel?
     
-
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         
@@ -85,24 +85,24 @@ class DetailViewController : UIViewController {
         descriptionLabel.text = selectedLocation?.exerciseDescription
     }
     
- /*   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    
-            let touch = touches.first!
-            //Make sure video only plays if user clicks in the video box
-            if touch.view == watchDemo
-            {
-                guard let path = Bundle.main.path(forResource: selectedLocation?.videoURL,
-                    ofType: "mp4") else { return }
-                let videoLink = URL(fileURLWithPath: path)
-                let player = AVPlayer(url: videoLink)
-                let playerViewController = AVPlayerViewController()
-                playerViewController.player = player
-                
-                self.present(playerViewController, animated: true) {
-                    playerViewController.player?.play()
-                }
-            }
-    }
- */
+    /*   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+     
+     let touch = touches.first!
+     //Make sure video only plays if user clicks in the video box
+     if touch.view == watchDemo
+     {
+     guard let path = Bundle.main.path(forResource: selectedLocation?.videoURL,
+     ofType: "mp4") else { return }
+     let videoLink = URL(fileURLWithPath: path)
+     let player = AVPlayer(url: videoLink)
+     let playerViewController = AVPlayerViewController()
+     playerViewController.player = player
+     
+     self.present(playerViewController, animated: true) {
+     playerViewController.player?.play()
+     }
+     }
+     }
+     */
     
 }

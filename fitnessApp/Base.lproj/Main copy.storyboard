@@ -386,7 +386,7 @@
         <!--Test View Controller-->
         <scene sceneID="ja2-kJ-BEl">
             <objects>
-                <viewController storyboardIdentifier="DetailsViewController" title="Test View Controller" id="ibT-HX-6TU" customClass="DetailsViewController" customModule="fitnessApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TestViewController" title="Test View Controller" id="ibT-HX-6TU" customClass="TestViewController" customModule="fitnessApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hXE-7F-GVK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -504,20 +504,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tBP-Vf-dxl"/>
                     </view>
-                    <navigationItem key="navigationItem" id="cVs-tG-gOH">
-                        <barButtonItem key="rightBarButtonItem" title="Watch Demo" style="done" id="cJs-sb-P3o">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="n3e-7a-Bkk">
-                                <rect key="frame" x="295" y="5.6666666666666679" width="99" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Watch Demo"/>
-                                <connections>
-                                    <action selector="watchDemo:" destination="ibT-HX-6TU" eventType="touchUpInside" id="Irk-2E-eyO"/>
-                                </connections>
-                            </button>
-                            <color key="tintColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="cVs-tG-gOH"/>
                     <connections>
                         <outlet property="mindMuscleConnectionTextLabel" destination="xy9-Qd-ZSn" id="lJz-8V-8Hc"/>
                         <outlet property="myLabel" destination="U7o-uj-xi8" id="oIS-lK-3b5"/>

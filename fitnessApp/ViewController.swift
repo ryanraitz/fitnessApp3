@@ -124,7 +124,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-
+        
     }
     
     //Getting data from protocol
@@ -149,43 +149,43 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     {
         let item: LocationModel = feedItems[1] as! LocationModel
         
-        if(item.muscleGroupID == "1" && item.goalID == "1")
+        if(item.muscleGroupID == "1" && item.goalID == "1" || item.goalID == "3")
         {
-            return "Shoulders (Heavy)"
+            return "Shoulders (Strength)"
         }
-        if(item.muscleGroupID == "1" && item.goalID == "2")
+        if(item.muscleGroupID == "1" && item.goalID == "2" || item.goalID == "4")
         {
             return "Shoulders (Hypertrophy)"
         }
-        if(item.muscleGroupID == "2" && item.goalID == "1")
+        if(item.muscleGroupID == "2" && item.goalID == "1" || item.goalID == "3")
         {
-            return "Legs (Heavy)"
+            return "Legs (Strength)"
         }
-        if(item.muscleGroupID == "2" && item.goalID == "2")
+        if(item.muscleGroupID == "2" && item.goalID == "2" || item.goalID == "4")
         {
             return "Legs (Hypertrophy)"
         }
-        if(item.muscleGroupID == "3" && item.goalID == "1")
+        if(item.muscleGroupID == "3" && item.goalID == "1" || item.goalID == "3")
         {
-            return "Back (Heavy)"
+            return "Back (Strength)"
         }
-        if(item.muscleGroupID == "3" && item.goalID == "2")
+        if(item.muscleGroupID == "3" && item.goalID == "2" || item.goalID == "4")
         {
             return "Back (Hypertrophy)"
         }
-        if(item.muscleGroupID == "4" && item.goalID == "1")
+        if(item.muscleGroupID == "4" && item.goalID == "1" || item.goalID == "3")
         {
-            return "Arms (Heavy)"
+            return "Arms (Strength)"
         }
-        if(item.muscleGroupID == "4" && item.goalID == "2")
+        if(item.muscleGroupID == "4" && item.goalID == "2" || item.goalID == "4")
         {
             return "Arms (Hypertrophy)"
         }
-        if(item.muscleGroupID == "5" && item.goalID == "1")
+        if(item.muscleGroupID == "5" && item.goalID == "1" || item.goalID == "3")
         {
-            return "Chest (Heavy)"
+            return "Chest (Strength)"
         }
-        if(item.muscleGroupID == "5" && item.goalID == "2")
+        if(item.muscleGroupID == "5" && item.goalID == "2" || item.goalID == "4")
         {
             return "Chest (Hypertrophy)"
         }
@@ -231,28 +231,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return myCell
     }
     
-  //Function to pass data to the TestViewController whenever a cell is selected
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-  {
-      
-      //Set selected location to var
-      selectedLocation = feedItems[indexPath.row] as! LocationModel
+    //Function to pass data to the TestViewController whenever a cell is selected
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        
+        //Set selected location to var
+        selectedLocation = feedItems[indexPath.row] as! LocationModel
+        
+        //Manually call segue to detail view controller
+        self.performSegue(withIdentifier: "testSegue", sender: self)
+        
+    }
     
-      //Manually call segue to detail view controller
-      self.performSegue(withIdentifier: "testSegue", sender: self)
-      
-  }
-  
-  //Function to perform segue to the TestViewController
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-      
-      //Get reference to the destination view controller
-      let detailVC  = segue.destination as! TestViewController
+    //Function to perform segue to the TestViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        
+        //Get reference to the destination view controller
+        let detailVC  = segue.destination as! TestViewController
+        
+        detailVC.selectedLocation = selectedLocation
+    }
     
-      detailVC.selectedLocation = selectedLocation
-  }
-
-
+    
 }
 

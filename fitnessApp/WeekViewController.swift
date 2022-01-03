@@ -11,7 +11,7 @@ import Firebase
 
 //View controller for weekly workouts screen
 class WeekViewController: UIViewController {
-
+    
     let ref = Database.database().reference(withPath: "maleExercises")
     
     @IBOutlet weak var logoutButtonStyle: UIBarButtonItem!
@@ -53,12 +53,12 @@ class WeekViewController: UIViewController {
     @IBAction func logoutButton(_ sender: UIButton) {
         
         UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-               UserDefaults.standard.synchronize()
-               
-               //switching to login screen
-               let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewcontroller") as! LoginViewController
-               self.navigationController?.pushViewController(loginViewController, animated: true)
-               self.dismiss(animated: false, completion: nil)
+        UserDefaults.standard.synchronize()
+        
+        //switching to login screen
+        let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewcontroller") as! LoginViewController
+        self.navigationController?.pushViewController(loginViewController, animated: true)
+        self.dismiss(animated: false, completion: nil)
         
     }
     
@@ -233,7 +233,7 @@ class WeekViewController: UIViewController {
             //setting the name to label
             let backButton = UIBarButtonItem(title: "Hey " + name + "!", style: UIBarButtonItem.Style.plain, target: navigationController, action: nil)
             
-             
+            
             navigationItem.leftBarButtonItem = backButton
             //navBar.title = "Hello " + name + "!"
         }

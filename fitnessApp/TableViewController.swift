@@ -13,10 +13,10 @@ import AVKit
 
 //Table view controller for exercises table in ViewController
 class TableViewController : UITableViewController {
-
-//Properties
-
-
+    
+    //Properties
+    
+    
     
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -31,7 +31,7 @@ class TableViewController : UITableViewController {
     
     var selectedLocation : LocationModel?
     
-
+    
     override func viewDidLoad(){
         
         super.viewDidLoad()
@@ -81,29 +81,29 @@ class TableViewController : UITableViewController {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-
+    
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
     
     //Depreciated video playback function
     /* override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    
-            let touch = touches.first!
-            //Make sure video only plays if user clicks in the video box
-            if touch.view == videoBox
-            {
-                guard let path = Bundle.main.path(forResource: selectedLocation?.videoURL,
-                    ofType: "mp4") else { return }
-                let videoLink = URL(fileURLWithPath: path)
-                let player = AVPlayer(url: videoLink)
-                let playerViewController = AVPlayerViewController()
-                playerViewController.player = player
-                
-                self.present(playerViewController, animated: true) {
-                    playerViewController.player?.play()
-                }
-            }
-    }
-    */
+     
+     let touch = touches.first!
+     //Make sure video only plays if user clicks in the video box
+     if touch.view == videoBox
+     {
+     guard let path = Bundle.main.path(forResource: selectedLocation?.videoURL,
+     ofType: "mp4") else { return }
+     let videoLink = URL(fileURLWithPath: path)
+     let player = AVPlayer(url: videoLink)
+     let playerViewController = AVPlayerViewController()
+     playerViewController.player = player
+     
+     self.present(playerViewController, animated: true) {
+     playerViewController.player?.play()
+     }
+     }
+     }
+     */
 }

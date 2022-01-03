@@ -22,13 +22,18 @@ class ThursdayModel: NSObject, URLSessionDataDelegate {
     weak var delegate: HomeModelProtocol!
     
     var rootref: DatabaseReference!
-
+    
     //Function to generate a snapshot of the Firebase database and return a locations object
     func downloadFirItems()
     {
+        let monthNumber = getMonth()
+        //print(monthNumber)
+        let dataBaseName = "maleExercises"
+        let fullDataBaseName = dataBaseName+monthNumber
+        //print(fullDataBaseName)
         rootref = Database.database().reference()
-        rootref.child("maleExercises").observeSingleEvent(of: .value, with: { (snapshot) in
-        
+        rootref.child(fullDataBaseName).observeSingleEvent(of: .value, with: { (snapshot) in
+            
             var myDictionary = [String:Any]()
             let locations = NSMutableArray()
             
@@ -69,21 +74,23 @@ class ThursdayModel: NSObject, URLSessionDataDelegate {
                 }
                 //print(location)
                 //Even week = Hypertrophy
-                if self.getWeek() % 2 == 0
+                //Even week = Hypertrophy
+                if self.getWeek() == 2 || self.getWeek() == 6 || self.getWeek() == 10 || self.getWeek() == 14 || self.getWeek() == 18 || self.getWeek() == 22 || self.getWeek() == 26 || self.getWeek() == 30 || self.getWeek() == 34 || self.getWeek() == 38 || self.getWeek() == 42 || self.getWeek() == 46 || self.getWeek() == 50
                 {
-                    /*    muscleGroupID                            goalID
-                    1 = Sunday/Shoulders                        1 = Heavy
-                    2 = Monday/Legs                        2 = Hypertrophy
-                    3 = Tuesday/Back
-                    4 = Wednesday/Arms
-                    5 = Thursday/Chest
-                    6 = Friday/Abs
-                    7 = Saturday/Arms                                      */
+                    
+                    /*    muscleGroupID                                 goalID
+                     1 = Sunday/Shoulders                        1 = Heavy
+                     2 = Monday/Legs                        2 = Hypertrophy
+                     3 = Tuesday/Back
+                     4 = Wednesday/Arms
+                     5 = Thursday/Chest
+                     6 = Friday/Abs
+                     7 = Saturday/Arms                                      */
                     if(location.muscleGroupID == "5" && location.goalID == "2")
                     {
-                                        
+                        
                         let currentID:Int? = Int(location.exerciseID!)
-            
+                        
                         if(locations.count == 0)
                         {
                             locations.add(location)
@@ -107,17 +114,101 @@ class ThursdayModel: NSObject, URLSessionDataDelegate {
                             
                         }
                         x+=1
-                                
+                        
                     }
                 }
-                //Odd week = Heavy
+                else if self.getWeek() == 3 || self.getWeek() == 7 || self.getWeek() == 11 || self.getWeek() == 15 || self.getWeek() == 19 || self.getWeek() == 23 || self.getWeek() == 27 || self.getWeek() == 31 || self.getWeek() == 35 || self.getWeek() == 39 || self.getWeek() == 43 || self.getWeek() == 47 || self.getWeek() == 51
+                {
+                    
+                    /*    muscleGroupID                                 goalID
+                     1 = Sunday/Shoulders                        1 = Heavy
+                     2 = Monday/Legs                        2 = Hypertrophy
+                     3 = Tuesday/Back
+                     4 = Wednesday/Arms
+                     5 = Thursday/Chest
+                     6 = Friday/Abs
+                     7 = Saturday/Arms                                      */
+                    if(location.muscleGroupID == "5" && location.goalID == "3")
+                    {
+                        
+                        let currentID:Int? = Int(location.exerciseID!)
+                        
+                        if(locations.count == 0)
+                        {
+                            locations.add(location)
+                            prevID = currentID!
+                        }
+                        else
+                        {
+                            //print(a!)
+                            //print(prevID)
+                            if(currentID! < prevID)
+                            {
+                                //print("inserted")
+                                locations.insert(location, at: x-1)
+                            }
+                            else
+                            {
+                                //print("added")
+                                locations.add(location)
+                                prevID = currentID!
+                            }
+                            
+                        }
+                        x+=1
+                        
+                    }
+                }
+                else if self.getWeek() == 4 || self.getWeek() == 8 || self.getWeek() == 12 || self.getWeek() == 16 || self.getWeek() == 20 || self.getWeek() == 24 || self.getWeek() == 28 || self.getWeek() == 32 || self.getWeek() == 36 || self.getWeek() == 40 || self.getWeek() == 44 || self.getWeek() == 48 || self.getWeek() == 52
+                {
+                    
+                    /*    muscleGroupID                                 goalID
+                     1 = Sunday/Shoulders                        1 = Heavy
+                     2 = Monday/Legs                        2 = Hypertrophy
+                     3 = Tuesday/Back
+                     4 = Wednesday/Arms
+                     5 = Thursday/Chest
+                     6 = Friday/Abs
+                     7 = Saturday/Arms                                      */
+                    if(location.muscleGroupID == "5" && location.goalID == "4")
+                    {
+                        
+                        let currentID:Int? = Int(location.exerciseID!)
+                        
+                        if(locations.count == 0)
+                        {
+                            locations.add(location)
+                            prevID = currentID!
+                        }
+                        else
+                        {
+                            //print(a!)
+                            //print(prevID)
+                            if(currentID! < prevID)
+                            {
+                                //print("inserted")
+                                locations.insert(location, at: x-1)
+                            }
+                            else
+                            {
+                                //print("added")
+                                locations.add(location)
+                                prevID = currentID!
+                            }
+                            
+                        }
+                        x+=1
+                        
+                    }
+                }
+                    //Week 1 = Heavy
                 else
                 {
                     if(location.muscleGroupID == "5" && location.goalID == "1")
                     {
-                                        
+                        
                         let currentID:Int? = Int(location.exerciseID!)
-            
+                        
                         if(locations.count == 0)
                         {
                             locations.add(location)
@@ -141,19 +232,19 @@ class ThursdayModel: NSObject, URLSessionDataDelegate {
                             
                         }
                         x+=1
-                                
+                        
                     }
                 }
-                    
+                
             }
-                        
-        //Execute itemsDownloaded() protocol to share data to ViewController
-        DispatchQueue.main.async(execute: { () -> Void in
-                        
-            self.delegate.itemsDownloaded(items: locations)
-                        
+            
+            //Execute itemsDownloaded() protocol to share data to ViewController
+            DispatchQueue.main.async(execute: { () -> Void in
+                
+                self.delegate.itemsDownloaded(items: locations)
+                
+            })
         })
-      })
     }
     
     //Function to return which week of the year it is for heavy/hypertrophy workout changes
@@ -163,6 +254,17 @@ class ThursdayModel: NSObject, URLSessionDataDelegate {
         let weekOfYear = calendar.component(.weekOfYear, from: Date.init(timeIntervalSinceNow: 0))
         //print(weekOfYear)
         return weekOfYear
+    }
+    
+    func getMonth() -> String
+    {
+        let date = Date()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.month], from: date)
+        let month = components.month
+        let myString = month?.description
+        //print(myString!)
+        return myString!
     }
     
 }

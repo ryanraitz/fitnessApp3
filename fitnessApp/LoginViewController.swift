@@ -9,10 +9,10 @@
 import UIKit
 import Alamofire
 import Firebase
- 
+
 //View controller for the starting login page
 class LoginViewController: UIViewController {
- 
+    
     //the defaultvalues to store user data
     let defaultValues = UserDefaults.standard
     
@@ -48,32 +48,32 @@ class LoginViewController: UIViewController {
     //Login button action method
     @IBAction func buttonLogin(_ sender: UIButton)
     {
-    
+        
         Auth.auth().signIn(withEmail: textFieldUserName.text!, password: textFieldPassword.text!)
         { (user, error) in
-           
+            
             //Successful login
             if error == nil
             {
-                 //set default value to register if user has previously logged in
-                 self.defaultValues.set(true, forKey: "usersignedin")
-                 self.defaultValues.synchronize()
-                 //migrate views to WeekViewController
-                 let tempViewController = self.storyboard?.instantiateViewController(withIdentifier: "WeekViewcontroller") as! WeekViewController
-                     self.navigationController?.pushViewController(tempViewController, animated: true)
-                     
-                     self.dismiss(animated: false, completion: nil)
-             }
-            //Failed login
+                //set default value to register if user has previously logged in
+                self.defaultValues.set(true, forKey: "usersignedin")
+                self.defaultValues.synchronize()
+                //migrate views to WeekViewController
+                let tempViewController = self.storyboard?.instantiateViewController(withIdentifier: "WeekViewcontroller") as! WeekViewController
+                self.navigationController?.pushViewController(tempViewController, animated: true)
+                
+                self.dismiss(animated: false, completion: nil)
+            }
+                //Failed login
             else
             {
-                     //error message in case of invalid credential
-                     self.labelMessage.text = "Invalid username or password"
+                //error message in case of invalid credential
+                self.labelMessage.text = "Invalid username or password"
             }
         }
     }
-
-            
+    
+    
     //Sign up button action method
     @IBAction func buttonSignUp(_ sender: UIButton)
     {
@@ -85,7 +85,7 @@ class LoginViewController: UIViewController {
         
     }
     
-            
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -131,10 +131,10 @@ class LoginViewController: UIViewController {
         }
         
     }
-         
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
- 
+    
 }

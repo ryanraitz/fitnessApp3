@@ -12,22 +12,22 @@ import Firebase
 
 //View controller for sign up screen
 class RegisterViewController: UIViewController {
- 
+    
     @IBOutlet weak var labelTitle: UILabel!
     
     @IBOutlet weak var textFieldUsername: UITextField!
     
     @IBOutlet weak var textFieldPassword: UITextField!
-
+    
     @IBOutlet weak var textFieldName: UITextField!
-
+    
     @IBOutlet weak var labelMessage: UILabel!
     
     @IBOutlet weak var registerButton: UIButton!
     
     //Sign up button action
     @IBAction func buttonRegister(_ sender: UIButton) {
-    
+        
         Auth.auth().createUser(withEmail: textFieldUsername.text!, password: textFieldPassword.text!)
         { (user, error) in
             if error == nil
@@ -36,14 +36,14 @@ class RegisterViewController: UIViewController {
                 
                 changeRequest?.displayName = self.textFieldName.text!
                 changeRequest?.commitChanges { (error) in
-                      // ...
+                    // ...
                 }
                 
-                  let tempViewController = self.storyboard?.instantiateViewController(withIdentifier: "WeekViewcontroller") as! WeekViewController
-                  //tempViewController.title = "Welcome"
-                  self.navigationController?.pushViewController(tempViewController, animated: true)
-                  
-                  self.dismiss(animated: false, completion: nil)
+                let tempViewController = self.storyboard?.instantiateViewController(withIdentifier: "WeekViewcontroller") as! WeekViewController
+                //tempViewController.title = "Welcome"
+                self.navigationController?.pushViewController(tempViewController, animated: true)
+                
+                self.dismiss(animated: false, completion: nil)
                 
             }
             else
@@ -74,7 +74,7 @@ class RegisterViewController: UIViewController {
         }
         
     }
-
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -108,7 +108,7 @@ class RegisterViewController: UIViewController {
         textFieldPassword.borderStyle = .none
         textFieldPassword.layer.addSublayer(bottomLine2)
         self.textFieldPassword.attributedPlaceholder = NSAttributedString(string: "Enter Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-      
+        
         //Name text field styling
         let bottomLine4 = CALayer()
         bottomLine4.frame = CGRect(x: 0, y: textFieldName.frame.height-2, width: textFieldName.frame.width, height: 2)
@@ -116,19 +116,19 @@ class RegisterViewController: UIViewController {
         textFieldName.borderStyle = .none
         textFieldName.layer.addSublayer(bottomLine4)
         self.textFieldName.attributedPlaceholder = NSAttributedString(string: "Enter First Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-      
+        
         // Sign up button styling
         /* registerButton.layer.cornerRadius = 5
-           registerButton.layer.shadowColor = UIColor.black.cgColor
-           registerButton.layer.shadowOffset = CGSize(width: 5, height: 5)
-           registerButton.layer.shadowRadius = 10
-           registerButton.layer.shadowOpacity = 1.0
-        */
+         registerButton.layer.shadowColor = UIColor.black.cgColor
+         registerButton.layer.shadowOffset = CGSize(width: 5, height: 5)
+         registerButton.layer.shadowRadius = 10
+         registerButton.layer.shadowOpacity = 1.0
+         */
     }
- 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
- 
+    
 }
